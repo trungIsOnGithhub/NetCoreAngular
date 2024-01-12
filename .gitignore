@@ -2,9 +2,12 @@
 
 # Compiled output
 */dist
-client/tmp
-client/out-tsc
-client/bazel-out
+*/tmp
+*/out-tsc
+*/bazel-out
+*/bin
+*/obj
+*/target
 
 # Node
 */node_modules
