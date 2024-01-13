@@ -38,7 +38,7 @@ namespace WebAPI.Models
         public string Description { get; set; }
 
         public DateTime PostedOn { get; set; } = DateTime.Now;
-        
+
         [ForeignKey("User")]
         public int PostedBy { get; set; }
         public User User { get; set; }       
