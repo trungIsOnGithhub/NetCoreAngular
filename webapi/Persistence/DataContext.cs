@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using webapi.Models;
 using Microsoft.EntityFrameworkCore;
-using webapi.Domain.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace webapi.DataAccess.Context
+namespace webapi.Persistence
 {
     public class TravelAppContext : IdentityDbContext<TravelUser>
     {
@@ -26,7 +26,7 @@ namespace webapi.DataAccess.Context
             setModelBuilderOrganizationEntity(modelBuilder);
             setModelBuilderPaymentEntity(modelBuilder);
 
-            modelBuilder.Entity<TravelUser>()
+            modelBuilder.Entity<User>()
                 .HasOne(entity => entity.Organization)
                 .WithMany(entity => entity.Users)
                 .HasForeignKey(entity => entity.OrganizationId)
