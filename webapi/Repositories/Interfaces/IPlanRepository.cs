@@ -1,6 +1,6 @@
 using webapi.Models;
 
-namespace webapi.Repositories.Interfaces
+namespace webapi.Repositories
 {
     public interface IPlanRepository : IRepository<Plan>
     {
