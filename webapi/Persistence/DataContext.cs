@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace webapi.Persistence
 {
-    public class TravelAppContext : IdentityDbContext<TravelUser>
+    public class DataContext : IdentityDbContext<TravelUser>
     {
         public DbSet<Agency> Agencies { get; set; }
         public DbSet<Plan> Plans { get; set; }
@@ -15,7 +15,7 @@ namespace webapi.Persistence
         public DbSet<Payment> PaymentEvents { get; set; }
         public DbSet<AvailableDate> AvailableDates { get; set; }
 
-        public TravelAppContext(DbContextOptions options) : base(options) {}
+        public DataContext(DbContextOptions options) : base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
