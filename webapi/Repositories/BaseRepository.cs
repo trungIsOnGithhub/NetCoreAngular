@@ -1,28 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 
-using webapi.Domain.Models;
-using webapi.DataAccess.Context;
-using webapi.DataAccess.Repositories.Interfaces;
+using webapi.Models;
+using webapi.Persistence;
+using webapi.Repositories.Interfaces;
 
-namespace webapi.DataAccess.Repositories.Implementations
+namespace webapi.Repositories.Implementations
 {
     public abstract class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly DataContext _context;
+
         public BaseRepository(DataContext context)
         {
             _context = context;
-        }
-
-        public virtual async Task DeleteByIdAsync(int id)
-        {
-            T entity = await _context.Set<T>().FindAsync(id);
-            if (entity == null)
-            {
-                return;
-            }
-            _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync();
         }
 
         public virtual async Task<List<T>> GetAllAsync()
@@ -49,6 +39,18 @@ namespace webapi.DataAccess.Repositories.Implementations
         public virtual async Task UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public virtual async Task DeleteByIdAsync(int id)
+        {
+            T entity = await _context.Set<T>().FindAsync(id);
+
+            if (entity is null)
+                return;
+
+            _context.Set<T>().Remove(entity);
+
             await _context.SaveChangesAsync();
         }
     }
