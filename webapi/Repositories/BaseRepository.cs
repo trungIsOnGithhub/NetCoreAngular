@@ -8,8 +8,8 @@ namespace webapi.DataAccess.Repositories.Implementations
 {
     public abstract class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly TravelAppContext _context;
-        public BaseRepository(TravelAppContext context)
+        private readonly DataContext _context;
+        public BaseRepository(DataContext context)
         {
             _context = context;
         }
