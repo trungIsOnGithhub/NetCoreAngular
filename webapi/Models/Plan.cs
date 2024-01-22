@@ -7,15 +7,15 @@ namespace webapi.Models
     {
         [Required]
         [MaxLength(100)]
-        public string HotelName { get; set; } = string.Empty;
+        public string HotelName { get; set; } = default;
 
         [Required]
         [MaxLength(100)]
-        public string Location { get; set; } = string.Empty;
+        public string Location { get; set; } = default;
 
         [Required]
         [MaxLength(100)]
-        public string Country { get; set; } = string.Empty;
+        public string Country { get; set; } = default;
 
         [Required]
         public int AgencyId { get; set; }
