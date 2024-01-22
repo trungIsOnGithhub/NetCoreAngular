@@ -17,7 +17,7 @@ namespace webapi.Repositories.Implementations
 
         public async Task<Organization> GetByUserId(string userId)
         {
-            return await _context.Users.Include(x => x.Organization).Where(x => x.Id == userId).Select(x => x.Organization).FirstOrDefaultAsync();
+            return await _context.Users.Include(e => e.Organization).Where(e => e.Id == userId).Select(e => e.Organization).FirstOrDefaultAsync();
         }
 
         public async Task<int> IterateContractNumber(int organizationId)

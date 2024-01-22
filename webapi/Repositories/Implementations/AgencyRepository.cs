@@ -17,12 +17,12 @@ namespace webapi.Repositories.Implementations
 
         public override async Task<Agency> GetByIdAsync(int id)
         {
-            return await _context.Agencies.Include(x => x.Plans).FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Agencies.Include(e => e.Plans).FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<List<Agency>> GetAllByUserIdAsync(int userId)
         {
-            return await _context.Agencies.Where(x => x.OrganizationId == userId).ToListAsync();
+            return await _context.Agencies.Where(e => e.OrganizationId == userId).ToListAsync();
         }
     }
 }
